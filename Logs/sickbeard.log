@@ -1,0 +1,802 @@
+2014-11-02 21:24:45 INFO     MAIN :: Checking database structure...
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Initial Schema database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT 1 FROM sqlite_master WHERE name = ?; with args ('db_version',)
+2014-11-02 21:24:45 DEBUG    MAIN :: InitialSchema upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add Size And Scene Name Fields database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: AddSizeAndSceneNameFields upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Rename Season Folders database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: RenameSeasonFolders upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add Subtitles Support database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: AddSubtitlesSupport upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add Db Info database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: AddIMDbInfo upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add1080p And Raw Qualities database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: Add1080pAndRawHDQualities upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add Proper Naming Support database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: AddProperNamingSupport upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add Email Subscription Table database upgrade
+2014-11-02 21:24:45 DEBUG    MAIN :: AddEmailSubscriptionTable upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add Showid Tvdbid Index database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: AddShowidTvdbidIndex upgrade not required
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Add Last Update database upgrade
+2014-11-02 21:24:45 DB       MAIN :: sickbeard.db: SELECT db_version FROM db_version
+2014-11-02 21:24:45 DEBUG    MAIN :: AddLastUpdateTVDB upgrade not required
+2014-11-02 21:24:45 INFO     MAIN :: Checking database structure...
+2014-11-02 21:24:45 DEBUG    MAIN :: Checking Initial Schema database upgrade
+2014-11-02 21:24:45 DB       MAIN :: cache.db: SELECT 1 FROM sqlite_master WHERE name = ?; with args ('lastUpdate',)
+2014-11-02 21:24:46 DEBUG    MAIN :: InitialSchema upgrade not required
+2014-11-02 21:24:46 DEBUG    MAIN :: Checking Add Scene Exceptions database upgrade
+2014-11-02 21:24:46 DB       MAIN :: cache.db: SELECT 1 FROM sqlite_master WHERE name = ?; with args ('scene_exceptions',)
+2014-11-02 21:24:46 DEBUG    MAIN :: AddSceneExceptions upgrade not required
+2014-11-02 21:24:46 DEBUG    MAIN :: Checking Add Scene Name Cache database upgrade
+2014-11-02 21:24:46 DB       MAIN :: cache.db: SELECT 1 FROM sqlite_master WHERE name = ?; with args ('scene_names',)
+2014-11-02 21:24:46 DEBUG    MAIN :: AddSceneNameCache upgrade not required
+2014-11-02 21:24:46 DEBUG    MAIN :: Checking Add Network Timezones database upgrade
+2014-11-02 21:24:46 DB       MAIN :: cache.db: SELECT 1 FROM sqlite_master WHERE name = ?; with args ('network_timezones',)
+2014-11-02 21:24:46 DEBUG    MAIN :: AddNetworkTimezones upgrade not required
+2014-11-02 21:24:46 INFO     MAIN :: Checking database structure...
+2014-11-02 21:24:46 DEBUG    MAIN :: Checking Initial Schema database upgrade
+2014-11-02 21:24:46 DB       MAIN :: failed.db: SELECT 1 FROM sqlite_master WHERE name = ?; with args ('failed',)
+2014-11-02 21:24:46 DEBUG    MAIN :: InitialSchema upgrade not required
+2014-11-02 21:24:46 DEBUG    MAIN :: Checking Size And Provider database upgrade
+2014-11-02 21:24:46 DEBUG    MAIN :: SizeAndProvider upgrade not required
+2014-11-02 21:24:46 DEBUG    MAIN :: Checking History database upgrade
+2014-11-02 21:24:46 DB       MAIN :: failed.db: SELECT 1 FROM sqlite_master WHERE name = ?; with args ('history',)
+2014-11-02 21:24:46 DEBUG    MAIN :: History upgrade not required
+2014-11-02 21:24:46 DEBUG    MAIN :: Checking History Status database upgrade
+2014-11-02 21:24:46 DEBUG    MAIN :: HistoryStatus upgrade not required
+2014-11-02 21:24:46 DB       MAIN :: sickbeard.db: SELECT show_id, tvdb_id, COUNT(tvdb_id) as count FROM tv_shows GROUP BY tvdb_id HAVING count > 1
+2014-11-02 21:24:46 INFO     MAIN :: No duplicate show, check passed
+2014-11-02 21:24:46 DB       MAIN :: sickbeard.db: SELECT showid, season, episode, COUNT(showid) as count FROM tv_episodes GROUP BY showid, season, episode HAVING count > 1
+2014-11-02 21:24:46 INFO     MAIN :: No duplicate episode, check passed
+2014-11-02 21:24:46 DB       MAIN :: sickbeard.db: SELECT episode_id, showid, tv_shows.tvdb_id FROM tv_episodes LEFT JOIN tv_shows ON tv_episodes.showid=tv_shows.tvdb_id WHERE tv_shows.tvdb_id is NULL
+2014-11-02 21:24:46 INFO     MAIN :: No orphan episodes, check passed
+2014-11-02 21:24:46 DEBUG    MAIN :: config_version -> 0
+2014-11-02 21:24:46 INFO     MAIN :: Backing up config before upgrade
+2014-11-02 21:24:46 DEBUG    MAIN :: Not creating backup, /usr/local/share/sickbeard/config.ini doesn't exist
+2014-11-02 21:24:46 INFO     MAIN :: Proceeding with upgrade
+2014-11-02 21:24:46 INFO     MAIN :: Migrating config up to version 1: Custom naming
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_use_periods -> 0
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_ep_type -> 0
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_sep_type -> 0
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_quality -> 0
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_show_name -> 1
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_ep_name -> 1
+2014-11-02 21:24:46 INFO     MAIN :: Based on your old settings I'm setting your new naming pattern to: %SN - %Sx%0E - %EN
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_dates -> 0
+2014-11-02 21:24:46 DEBUG    MAIN :: naming_multi_ep_type -> 1
+2014-11-02 21:24:46 DB       MAIN :: sickbeard.db: SELECT * FROM tv_shows WHERE flatten_folders = 0
+2014-11-02 21:24:46 INFO     MAIN :: No shows were using season folders before so I'm disabling flattening on all shows
+2014-11-02 21:24:46 DB       MAIN :: sickbeard.db: UPDATE tv_shows SET flatten_folders = 0
+2014-11-02 21:24:46 DEBUG    MAIN :: Using cached parse result for: Show.Name.S02E03.HDTV.XviD-RLSGROUP
+2014-11-02 21:24:46 DEBUG    MAIN :: formatting pattern: %SN - %Sx%0E - %EN -> Show Name - 2x03 - Ep Name
+2014-11-02 21:24:46 DEBUG    MAIN :: Trying to parse Show Name - 2x03 - Ep Name.ext
+2014-11-02 21:24:46 DEBUG    MAIN :: The name Show Name - 2x03 - Ep Name.ext parsed into Show Name - S2E3 - Ep Name [ABD: False]
+2014-11-02 21:24:46 INFO     MAIN :: Saving config file to disk
+2014-11-02 21:24:46 INFO     MAIN :: Backing up config before upgrade
+2014-11-02 21:24:46 DEBUG    MAIN :: Trying to back up /usr/local/share/sickbeard/config.ini to /usr/local/share/sickbeard/config.ini.v1
+2014-11-02 21:24:46 DEBUG    MAIN :: Backup done
+2014-11-02 21:24:46 INFO     MAIN :: Proceeding with upgrade
+2014-11-02 21:24:46 INFO     MAIN :: Migrating config up to version 2: Sync backup number with version number
+2014-11-02 21:24:46 INFO     MAIN :: Saving config file to disk
+2014-11-02 21:24:47 INFO     MAIN :: Backing up config before upgrade
+2014-11-02 21:24:47 DEBUG    MAIN :: Trying to back up /usr/local/share/sickbeard/config.ini to /usr/local/share/sickbeard/config.ini.v2
+2014-11-02 21:24:47 DEBUG    MAIN :: Backup done
+2014-11-02 21:24:47 INFO     MAIN :: Proceeding with upgrade
+2014-11-02 21:24:47 INFO     MAIN :: Migrating config up to version 3: Rename omgwtfnzb variables
+2014-11-02 21:24:47 DEBUG    MAIN :: omgwtfnzbs_uid -> 
+2014-11-02 21:24:47 DEBUG    MAIN :: omgwtfnzbs_key -> 
+2014-11-02 21:24:47 INFO     MAIN :: Saving config file to disk
+2014-11-02 21:24:47 DEBUG    MAIN :: Retrieving the last check time from the DB
+2014-11-02 21:24:47 DB       MAIN :: sickbeard.db: SELECT * FROM info
+2014-11-02 21:24:47 INFO     MAIN :: Starting Sick Beard on http://0.0.0.0:8081/
+2014-11-02 21:24:47 INFO     MAIN :: Loading initial show list
+2014-11-02 21:24:47 DB       MAIN :: sickbeard.db: SELECT * FROM tv_shows
+2014-11-02 21:24:47 DEBUG    SEARCH :: Starting new thread: SEARCH
+2014-11-02 21:24:47 DEBUG    BACKLOG :: Starting new thread: BACKLOG
+2014-11-02 21:24:47 DEBUG    BACKLOG :: Retrieving the last check time from the DB
+2014-11-02 21:24:47 DB       BACKLOG :: sickbeard.db: SELECT * FROM info
+2014-11-02 21:24:47 DEBUG    CHECKVERSION :: Starting new thread: CHECKVERSION
+2014-11-02 21:24:47 INFO     CHECKVERSION :: Checking if source needs an update
+2014-11-02 21:24:47 INFO     SEARCHQUEUE-RSS-SEARCH :: Changing all old missing episodes to status WANTED
+2014-11-02 21:24:47 INFO     BACKLOG :: Running limited backlog on recently missed episodes only
+2014-11-02 21:24:47 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_episodes WHERE status = ? AND airdate < ? with args [1, 735539]
+2014-11-02 21:24:47 DEBUG    BACKLOG :: Air-by-date segments: []
+2014-11-02 21:24:47 INFO     SEARCHQUEUE-RSS-SEARCH :: Beginning search for new episodes on RSS
+2014-11-02 21:24:47 INFO     SEARCHQUEUE-RSS-SEARCH :: Searching all providers for any needed episodes
+2014-11-02 21:24:48 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT time FROM lastUpdate WHERE provider = ? with args ['thepiratebay']
+2014-11-02 21:24:48 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Search string: http://pirateproxy.net/tv/latest/
+2014-11-02 21:24:48 WARNING  CHECKVERSION :: HTTP error 404 while loading URL https://api.github.com/repos/mr-orange/Sick-Beard/commits?per_page=100&sha=ThePirateBay
+2014-11-02 21:24:48 DEBUG    CHECKVERSION :: newest: None and current: None and num_commits: 0
+2014-11-02 21:24:48 DEBUG    CHECKVERSION :: After checking, cur_commit = None, newest_commit = None, num_commits_behind = 0
+2014-11-02 21:24:48 DEBUG    CHECKVERSION :: Unknown current version, don't know if we should update or not
+2014-11-02 21:24:48 INFO     CHECKVERSION :: Check scene exceptions update
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: ThePirateBay Provider found result Waterloo.Road.s10e03.mp4 but that doesn't seem like a trusted result so I'm ignoring it
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: ThePirateBay Provider found result Doctor_Who_(2005)_-_S08E11_-_Dark_Water.mp4 but that doesn't seem like a trusted result so I'm ignoring it
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: ThePirateBay Provider found result Doctor_Who_2005_S08E11_1080p_WEB-DL_ReEnc_x264-xRed but that doesn't seem like a trusted result so I'm ignoring it
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: ThePirateBay Provider found result Doctor_Who_2005_S08E11_720p_WEB-DL_ReEnc_x264-xRed but that doesn't seem like a trusted result so I'm ignoring it
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: ThePirateBay Provider found result Doctor_Who_2005_S08E11_480p_WEB-DL_ReEnc_x264-xRed but that doesn't seem like a trusted result so I'm ignoring it
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [272391]
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: ThePirateBay Provider found result Pokemon_S17E41_-_Battling_Into_the_Hall_of_Fame.mp4 but that doesn't seem like a trusted result so I'm ignoring it
+2014-11-02 21:24:49 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: UPDATE lastUpdate SET time = ? WHERE provider = ? with args [1414963489, 'thepiratebay']
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [264535]
+2014-11-02 21:24:49 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO lastUpdate (time, provider) VALUES (?, ?) with args [1414963489, 'thepiratebay']
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [247824]
+2014-11-02 21:24:49 INFO     SEARCHQUEUE-RSS-SEARCH :: Clearing ThePirateBay cache and updating with new information
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71699]
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [253982]
+2014-11-02 21:24:49 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: DELETE FROM thepiratebay WHERE 1
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: S.aring..mycket.b.auml.ttre.-.S05E03.-.SweSub.avi
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79905]
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [276515]
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [249892]
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of S aring  mycket b auml ttre
+2014-11-02 21:24:49 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'S.aring.mycket.b.auml.ttre']
+2014-11-02 21:24:49 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [276526]
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:24:49 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:24:50 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'S aring  mycket b auml ttre', u'S aring  mycket b auml ttre']
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [244061]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [260165]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248503]
+2014-11-02 21:24:50 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for S aring  mycket b auml ttre
+2014-11-02 21:24:50 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [273424]
+2014-11-02 21:24:50 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'S.aring.mycket.b.auml.ttre']
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71788]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [260206]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [254067]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [249980]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [280939]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [145541]
+2014-11-02 21:24:50 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [82060]
+2014-11-02 21:24:56 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'S.aring..mycket.b.auml.ttre.-.S05E03.-.SweSub.avi', 5, '|3|', 0, 0, 'magnet:?xt=urn:btih:9fd4343bcf8f24cab0b3fb9d809605b913216409&dn=S&aring;+mycket+b&auml;ttre+-+S05E03+-+SweSub.avi&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963490, 32768]
+2014-11-02 21:24:56 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [281624]
+2014-11-02 21:24:56 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.XViD.MP3-Devil.[vajnis]
+2014-11-02 21:24:56 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80018]
+2014-11-02 21:24:56 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [266388]
+2014-11-02 21:24:56 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of The Flash 2014
+2014-11-02 21:24:56 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250015]
+2014-11-02 21:24:56 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'The.Flash.2014']
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [254112]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [282786]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:24:57 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'The Flash 2014', u'The Flash 2014']
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73893]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match original name but trying to manually strip and specify show year
+2014-11-02 21:24:57 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE (show_name LIKE ? OR tvr_name LIKE ?) AND startyear = ? with args [u'The Flash%', u'The Flash%', u'2014']
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [84146]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for The Flash 2014
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [282654]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [198841]
+2014-11-02 21:24:57 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'The.Flash.2014']
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [194751]
+2014-11-02 21:24:57 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.XViD.MP3-Devil.[vajnis]', 1, '|4|', 0, 0, 'magnet:?xt=urn:btih:ae883e8854aceefb887a66f32eadeb45dc36e7d3&dn=The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.XViD.MP3-Devil+[vajnis]&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963497, 1]
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [270528]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.720p.XViD.AC3-Devil.[va
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [92361]
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [256204]
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [198861]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of The Flash 2014
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [255693]
+2014-11-02 21:24:57 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'The.Flash.2014']
+2014-11-02 21:24:57 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [262353]
+2014-11-02 21:24:57 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.720p.XViD.AC3-Devil.[va', 1, '|4|', 0, 0, 'magnet:?xt=urn:btih:db1caa9f99ef7401ea9d47c9c066ab9d70490890&dn=The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.720p.XViD.AC3-Devil+[va&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963497, 32768]
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [82135]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Tyrant.-.S01E07.-.SweSub.avi
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [139481]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Tyrant
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [213211]
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Tyrant']
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [262368]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [168161]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [78051]
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80101]
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'Tyrant', u'Tyrant']
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [262377]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for Tyrant
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [129261]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250095]
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'Tyrant']
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [78075]
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [88321]
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Tyrant.-.S01E07.-.SweSub.avi', 1, '|7|', 0, 0, 'magnet:?xt=urn:btih:481b32026a34b8d90bcb198556e79b3742850cc3&dn=Tyrant+-+S01E07+-+SweSub.avi&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963498, 32768]
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [264450]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: En.liten.fransk.stad.-.S01E05.-.SweSub.avi
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of En liten fransk stad
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [82186]
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'En.liten.fransk.stad']
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80159]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250153]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'En liten fransk stad', u'En liten fransk stad']
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [256300]
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for En liten fransk stad
+2014-11-02 21:24:58 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [78125]
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'En.liten.fransk.stad']
+2014-11-02 21:24:58 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [268591]
+2014-11-02 21:24:58 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'En.liten.fransk.stad.-.S01E05.-.SweSub.avi', 1, '|5|', 0, 0, 'magnet:?xt=urn:btih:a74603e36b55d3929c0a0ce617e5a63fff100075&dn=En+liten+fransk+stad+-+S01E05+-+SweSub.avi&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963498, 32768]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71985]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E06.720p.HDTV.x264-QCF[rartv]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [260489]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71998]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76104]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E06.720p.HDTV.x264-QCF[rartv]', 4, '|6|', 0, 0, 'magnet:?xt=urn:btih:967b0223e371ddb60cd746e9f7f3aa28eb04b0f6&dn=Key.and.Peele.S04E06.720p.HDTV.x264-QCF[rartv]&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963499, 4]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76107]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Saturday.Night.Live.S40E05.720p.HDTV.2CH.x265.HEVC-PSA
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [94551]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Saturday Night Live
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [84312]
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Saturday.Night.Live']
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [172381]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80226]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76133]
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Saturday.Night.Live.S40E05.720p.HDTV.2CH.x265.HEVC-PSA', 40, '|5|', 0, 0, 'magnet:?xt=urn:btih:65860b0425694ec13b9fdd880cba3009f81ddd33&dn=Saturday.Night.Live.S40E05.720p.HDTV.2CH.x265.HEVC-PSA&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963499, 32768]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [280937]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E05.720p.HDTV.x264-QCF[rartv]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [166251]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [280949]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [199031]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [281664]
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76119]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76168]
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E05.720p.HDTV.x264-QCF[rartv]', 4, '|5|', 0, 0, 'magnet:?xt=urn:btih:dcb5651a7d84c4fa4299c01a9b626b56201a7994&dn=Key.and.Peele.S04E05.720p.HDTV.x264-QCF[rartv]&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963499, 4]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [197001]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Doctor.Who.2005.S08E11.Dark.Water.720p.WEB-DL.2CH.x265.HEVC-PSA
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [256394]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [252312]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Doctor Who 2005
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250267]
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Doctor.Who.2005']
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [252319]
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [139681]
+2014-11-02 21:24:59 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:24:59 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80290]
+2014-11-02 21:24:59 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Doctor.Who.2005.S08E11.Dark.Water.720p.WEB-DL.2CH.x265.HEVC-PSA', 8, '|11|', 0, 0, 'magnet:?xt=urn:btih:72e88a1e54f1fe8cfa005b891e3b9a5713a65170&dn=Doctor.Who.2005.S08E11.Dark.Water.720p.WEB-DL.2CH.x265.HEVC-PSA&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963499, 32768]
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [278976]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Faking.It.(2014).S02E06.x264.(WEB-DL).1080p.Eng.NLSubs.TBS
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [283073]
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [116811]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Faking It (2014)
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248261]
+2014-11-02 21:25:00 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Faking.It.2014']
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [82374]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76235]
+2014-11-02 21:25:00 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'Faking It (2014)', u'Faking It (2014)']
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76237]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match original name but trying to manually strip and specify show year
+2014-11-02 21:25:00 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE (show_name LIKE ? OR tvr_name LIKE ?) AND startyear = ? with args [u'Faking It%', u'Faking It%', u'2014']
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72150]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for Faking It (2014)
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250331]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:25:00 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'Faking.It.2014']
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72164]
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [264679]
+2014-11-02 21:25:00 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Faking.It.(2014).S02E06.x264.(WEB-DL).1080p.Eng.NLSubs.TBS', 2, '|6|', 0, 0, 'magnet:?xt=urn:btih:1120ac323e7e3fcdad215f69ee8a93cd242a8dbc&dn=Faking+It+(2014)+S02E06+x264+(WEB-DL)+1080p+Eng+NLSubs+TBS&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963500, 32768]
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [260586]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E06.HDTV.XviD-AFG
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80379]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [90621]
+2014-11-02 21:25:00 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [270849]
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72194]
+2014-11-02 21:25:00 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:00 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E06.HDTV.XviD-AFG', 4, '|6|', 0, 0, 'magnet:?xt=urn:btih:8c3a3c55e3c819566078399e567fdf1a7c3b3540&dn=Key.and.Peele.S04E06.HDTV.XviD-AFG&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963500, 1]
+2014-11-02 21:25:00 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [246281]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Mom.S02E01.Hepatitis.and.Lemon.Zest.1080p.WEB-DL.DD5.1.H.264-SA8
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [82448]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [90651]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Mom
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [273005]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72224]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Mom']
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [82467]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72231]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'Mom', u'Mom']
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [74281]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for Mom
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [88631]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [283196]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'Mom']
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [264776]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Mom.S02E01.Hepatitis.and.Lemon.Zest.1080p.WEB-DL.DD5.1.H.264-SA8', 2, '|1|', 0, 0, 'magnet:?xt=urn:btih:996a18b2d9e079cc521440412a974a97d59e6e25&dn=Mom.S02E01.Hepatitis.and.Lemon.Zest.1080p.WEB-DL.DD5.1.H.264-SA8&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963501, 64]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250445]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [174681]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E06.720p.HDTV.x264-QCF
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [275039]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [164451]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [273002]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72301]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E06.720p.HDTV.x264-QCF', 4, '|6|', 0, 0, 'magnet:?xt=urn:btih:41e4d91ce4f988213fd4000c852ed38bb2fca6ac&dn=Key.and.Peele.S04E06.720p.HDTV.x264-QCF&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963501, 4]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72306]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Manhattan.S01E12.x264.1080p.WEB-DL.Eng.NLsubs.TBS
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [90751]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [262787]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Manhattan
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [74372]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Manhattan']
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80522]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [283291]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'Manhattan', u'Manhattan']
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250525]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for Manhattan
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [139941]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80552]
+2014-11-02 21:25:01 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [168621]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'Manhattan']
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [250544]
+2014-11-02 21:25:01 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [277169]
+2014-11-02 21:25:01 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Manhattan.S01E12.x264.1080p.WEB-DL.Eng.NLsubs.TBS', 1, '|12|', 0, 0, 'magnet:?xt=urn:btih:dd6e4f8e468acf14903402bb28a89e4eadad249b&dn=Manhattan+S01E12+x264+1080p+WEB-DL+Eng+NLsubs+TBS&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963501, 32768]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [277171]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: The.crazy.ones.-.S01E21.-.SweSub.avi
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70327]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70336]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of The crazy ones
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'The.crazy.ones']
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [88771]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [281467]
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'The crazy ones', u'The crazy ones']
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [131791]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for The crazy ones
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [258773]
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'The.crazy.ones']
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [260839]
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'The.crazy.ones.-.S01E21.-.SweSub.avi', 1, '|21|', 0, 0, 'magnet:?xt=urn:btih:16b802a833301159ffa574c95cfd11da29357ac1&dn=The+crazy+ones+-+S01E21+-+SweSub.avi&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963502, 32768]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72829]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Mom.S02E01.Hepatitis.and.Lemon.Zest.720p.WEB-DL.DD5.1.H.264-SA89
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80625]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Mom
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72449]
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Mom']
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80646]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [262927]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Mom.S02E01.Hepatitis.and.Lemon.Zest.720p.WEB-DL.DD5.1.H.264-SA89', 2, '|1|', 0, 0, 'magnet:?xt=urn:btih:7783c892db0e26880566b13246555b3ce73d0c7a&dn=Mom.S02E01.Hepatitis.and.Lemon.Zest.720p.WEB-DL.DD5.1.H.264-SA89&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963502, 32]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [74512]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80665]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E05.720p.HDTV.x264-QCF
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248618]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [285507]
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [262980]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [254798]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E05.720p.HDTV.x264-QCF', 4, '|5|', 0, 0, 'magnet:?xt=urn:btih:a2b6addeb31e90e8cac9ea651c59708b2decc688&dn=Key.and.Peele.S04E05.720p.HDTV.x264-QCF&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963502, 4]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [263002]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72546]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Manhattan.S01E13.x264.1080p.WEB-DL.Eng.NLsubs.TBS
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72549]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Manhattan
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72553]
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Manhattan']
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [140141]
+2014-11-02 21:25:02 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248699]
+2014-11-02 21:25:02 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:02 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Manhattan.S01E13.x264.1080p.WEB-DL.Eng.NLsubs.TBS', 1, '|13|', 0, 0, 'magnet:?xt=urn:btih:a8c61f339c9b2ac6b02a05b0853ee842c782351f&dn=Manhattan+S01E13+x264+1080p+WEB-DL+Eng+NLsubs+TBS&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963502, 32768]
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [74626]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Manhattan.S01E11.x264.1080p.WEB-DL.Eng.NLsubs.TBS
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271241]
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81391]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Manhattan
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76703]
+2014-11-02 21:25:03 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Manhattan']
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76706]
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [281511]
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70572]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70578]
+2014-11-02 21:25:03 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Manhattan.S01E11.x264.1080p.WEB-DL.Eng.NLsubs.TBS', 1, '|11|', 0, 0, 'magnet:?xt=urn:btih:c498c23b2988438449788d21bb6060c69af172cb&dn=Manhattan+S01E11+x264+1080p+WEB-DL+Eng+NLsubs+TBS&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963503, 32768]
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73545]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Z.Nation.S01E05.720P.HDTV.DD5.1.Eng.NLsubs.TBS
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [238521]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Z Nation
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [281535]
+2014-11-02 21:25:03 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Z.Nation']
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76736]
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [166851]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [267206]
+2014-11-02 21:25:03 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Z.Nation.S01E05.720P.HDTV.DD5.1.Eng.NLsubs.TBS', 1, '|5|', 0, 0, 'magnet:?xt=urn:btih:80b8c392e802ffe3aa7008f60e03770ebaf20d1d&dn=Z+Nation+S01E05+720P+HDTV+DD5.1+Eng+NLsubs+TBS&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963503, 32768]
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [78804]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E06.HDTV.XviD-AFG
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248789]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E06.HDTV.XviD-AFG
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [187351]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:03 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:03 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [193501]
+2014-11-02 21:25:03 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:03 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E06.HDTV.XviD-AFG', 4, '|6|', 0, 0, 'magnet:?xt=urn:btih:cd850972b168ecbf66f59f903ac0d612dec73316&dn=Key.and.Peele.S04E06.HDTV.XviD-AFG&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963503, 1]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [84133]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Holiday.Of.My.Life.Time.S01E04.HDTV.x264-TASTETV
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [230371]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [82918]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Holiday Of My Life Time
+2014-11-02 21:25:04 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Holiday.Of.My.Life.Time']
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [273383]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:04 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Holiday.Of.My.Life.Time.S01E04.HDTV.x264-TASTETV', 1, '|4|', 0, 0, 'magnet:?xt=urn:btih:40ab2ce729b1ad90d5376543f188de1152befdb1&dn=Holiday.Of.My.Life.Time.S01E04.HDTV.x264-TASTETV&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963504, 1]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76779]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E05.HDTV.XviD-AFG
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248812]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [220141]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [283630]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [267260]
+2014-11-02 21:25:04 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [175101]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [78846]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:04 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E05.HDTV.XviD-AFG', 4, '|5|', 0, 0, 'magnet:?xt=urn:btih:c5ad3eb28244f3e344018b5a9a06e83bbbb9d461&dn=Key.and.Peele.S04E05.HDTV.XviD-AFG&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963504, 1]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248834]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Girl.vs.Boy.S03E04.720p.HDTV.x264-FiHTV
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248835]
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248836]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Girl vs Boy
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76808]
+2014-11-02 21:25:04 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Girl.vs.Boy']
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248841]
+2014-11-02 21:25:04 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:04 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72716]
+2014-11-02 21:25:04 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Girl.vs.Boy.S03E04.720p.HDTV.x264-FiHTV', 3, '|4|', 0, 0, 'magnet:?xt=urn:btih:49820501c056a9918416a49a3b835607358e3eda&dn=Girl.vs.Boy.S03E04.720p.HDTV.x264-FiHTV&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963504, 4]
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [74768]
+2014-11-02 21:25:05 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76817]
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80915]
+2014-11-02 21:25:05 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of The X Factor UK
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [277528]
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [281776]
+2014-11-02 21:25:05 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'The.X.Factor.UK']
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [259106]
+2014-11-02 21:25:05 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:05 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP', 11, '|22|', 0, 0, 'magnet:?xt=urn:btih:27cd8f591ae30b908d6a79f2e990b24a649ba5ac&dn=The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963505, 4]
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [265252]
+2014-11-02 21:25:05 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.1080p.WEB-DL.DD
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [275493]
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [105521]
+2014-11-02 21:25:05 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Two and a Half Men
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [279603]
+2014-11-02 21:25:05 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Two.and.a.Half.Men']
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [84489]
+2014-11-02 21:25:05 DEBUG    SEARCHQUEUE-RSS-SEARCH :: No cache results returned, continuing on with the search
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271421]
+2014-11-02 21:25:05 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Trying to look the show up in the show database
+2014-11-02 21:25:05 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [277568]
+2014-11-02 21:25:05 DB       SEARCHQUEUE-RSS-SEARCH :: sickbeard.db: SELECT * FROM tv_shows WHERE show_name LIKE ? OR tvr_name LIKE ? with args [u'Two and a Half Men', u'Two and a Half Men']
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [252019]
+2014-11-02 21:25:06 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Unable to match a record in the DB for Two and a Half Men
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80964]
+2014-11-02 21:25:06 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Couldn't figure out a show name straight from the DB, trying a regex search instead
+2014-11-02 21:25:06 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO scene_names (tvdb_id, name) VALUES (?, ?) with args [0, u'Two.and.a.Half.Men']
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [255045]
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70726]
+2014-11-02 21:25:06 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.1080p.WEB-DL.DD', 12, '|1|', 0, 0, 'magnet:?xt=urn:btih:21bd9190422c8357888d6d5d366ccf8c03400496&dn=Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.1080p.WEB-DL.DD&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963506, 32768]
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [277580]
+2014-11-02 21:25:06 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.720p.WEB-DL.DD5
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [205901]
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [261202]
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [164951]
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [80994]
+2014-11-02 21:25:06 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Two and a Half Men
+2014-11-02 21:25:06 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [156771]
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [78949]
+2014-11-02 21:25:07 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Two.and.a.Half.Men']
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [261222]
+2014-11-02 21:25:07 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248935]
+2014-11-02 21:25:07 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.720p.WEB-DL.DD5', 12, '|1|', 0, 0, 'magnet:?xt=urn:btih:f08a7a4d508dd049ca42b046ad3e3c8f1e172e80&dn=Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.720p.WEB-DL.DD5&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963507, 32768]
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70760]
+2014-11-02 21:25:07 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP[rartv]
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [78956]
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [261240]
+2014-11-02 21:25:07 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of The X Factor UK
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [76925]
+2014-11-02 21:25:07 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'The.X.Factor.UK']
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [248962]
+2014-11-02 21:25:07 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:07 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [74897]
+2014-11-02 21:25:07 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP[rartv]', 11, '|22|', 0, 0, 'magnet:?xt=urn:btih:acf72fd8be1b6f25fa8b8e3deac74c2360ce13e8&dn=The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP[rartv]&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963507, 4]
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [265373]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E06.480p.HDTV.x264-mSD
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [120541]
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271525]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83115]
+2014-11-02 21:25:08 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [85168]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [265393]
+2014-11-02 21:25:08 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E06.480p.HDTV.x264-mSD', 4, '|6|', 0, 0, 'magnet:?xt=urn:btih:fad3cb0ed0da4d311d452c4a6adc2cf8fc5a3673&dn=Key.and.Peele.S04E06.480p.HDTV.x264-mSD&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963508, 1]
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83123]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E05.HDTV.XviD-AFG
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271902]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E05.HDTV.XviD-AFG
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [265406]
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79040]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [74946]
+2014-11-02 21:25:08 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [263365]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [212171]
+2014-11-02 21:25:08 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E05.HDTV.XviD-AFG', 4, '|5|', 0, 0, 'magnet:?xt=urn:btih:4b4de8383fae5f12b2ff26deddf22cba1f86a8a0&dn=Key.and.Peele.S04E05.HDTV.XviD-AFG&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963508, 1]
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [273616]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Key.and.Peele.S04E05.480p.HDTV.x264-mSD
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [95441]
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70870]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Key and Peele
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [263387]
+2014-11-02 21:25:08 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Key.and.Peele']
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269538]
+2014-11-02 21:25:08 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:08 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [279779]
+2014-11-02 21:25:08 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Key.and.Peele.S04E05.480p.HDTV.x264-mSD', 4, '|5|', 0, 0, 'magnet:?xt=urn:btih:559247cd0421e08560f35f71b198526483439164&dn=Key.and.Peele.S04E05.480p.HDTV.x264-mSD&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963508, 1]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [284881]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Girl.vs.Boy.S03E04.480p.HDTV.x264-mSD
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [85228]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Girl vs Boy
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [113901]
+2014-11-02 21:25:09 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Girl.vs.Boy']
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [208111]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [118001]
+2014-11-02 21:25:09 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Girl.vs.Boy.S03E04.480p.HDTV.x264-mSD', 3, '|4|', 0, 0, 'magnet:?xt=urn:btih:d2dfd3741f55fb1ac84ccb097ebcb4f546f9f58d&dn=Girl.vs.Boy.S03E04.480p.HDTV.x264-mSD&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963509, 1]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [195831]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Adding item to cache: Girl.vs.Boy.S03E04.HDTV.x264-FiHTV
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [210171]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [152831]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Checking the cache to see if we already know the tvdb id of Girl vs Boy
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [275723]
+2014-11-02 21:25:09 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM scene_names WHERE name = ? with args [u'Girl.vs.Boy']
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269584]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Cache lookup found 0, using that
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269586]
+2014-11-02 21:25:09 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: INSERT INTO thepiratebay (name, season, episodes, tvrid, tvdbid, url, time, quality) VALUES (?,?,?,?,?,?,?,?) with args [u'Girl.vs.Boy.S03E04.HDTV.x264-FiHTV', 3, '|4|', 0, 0, 'magnet:?xt=urn:btih:1a2fa7871d10867a31065815d61a47eba36603bb&dn=Girl.vs.Boy.S03E04.HDTV.x264-FiHTV&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:6969&tr=udp://open.demonii.com:1337', 1414963509, 1]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269589]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [267542]
+2014-11-02 21:25:09 DB       SEARCHQUEUE-RSS-SEARCH :: cache.db: SELECT * FROM thepiratebay
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [267543]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: S.aring..mycket.b.auml.ttre.-.S05E03.-.SweSub.avi
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75032]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: S.aring..mycket.b.auml.ttre.-.S05E03.-.SweSub.avi contains swesub(bed)?, ignoring it
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.XViD.MP3-Devil.[vajnis]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.XViD.MP3-Devil.[vajnis] contains swesub(bed)?, ignoring it
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.720p.XViD.AC3-Devil.[va
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: The.Flash.2014.S01E04.CUSTOM.SWESUB.HDTV.720p.XViD.AC3-Devil.[va contains swesub(bed)?, ignoring it
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Tyrant.-.S01E07.-.SweSub.avi
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: Tyrant.-.S01E07.-.SweSub.avi contains swesub(bed)?, ignoring it
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [220441]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: En.liten.fransk.stad.-.S01E05.-.SweSub.avi
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: En.liten.fransk.stad.-.S01E05.-.SweSub.avi contains swesub(bed)?, ignoring it
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [193821]
+2014-11-02 21:25:09 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E06.720p.HDTV.x264-QCF[rartv]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [95521]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [77120]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [275777]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83268]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269637]
+2014-11-02 21:25:09 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269641]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [268855]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81230]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75088]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269650]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269651]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269653]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Saturday.Night.Live.S40E05.720p.HDTV.2CH.x265.HEVC-PSA
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E05.720p.HDTV.x264-QCF[rartv]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [222551]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Doctor.Who.2005.S08E11.Dark.Water.720p.WEB-DL.2CH.x265.HEVC-PSA
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [259418]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Faking.It.(2014).S02E06.x264.(WEB-DL).1080p.Eng.NLSubs.TBS
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: Faking.It.(2014).S02E06.x264.(WEB-DL).1080p.Eng.NLSubs.TBS contains nlsub(bed|s)?, ignoring it
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E06.HDTV.XviD-AFG
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Mom.S02E01.Hepatitis.and.Lemon.Zest.1080p.WEB-DL.DD5.1.H.264-SA8
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E06.720p.HDTV.x264-QCF
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Manhattan.S01E12.x264.1080p.WEB-DL.Eng.NLsubs.TBS
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: Manhattan.S01E12.x264.1080p.WEB-DL.Eng.NLsubs.TBS contains nlsub(bed|s)?, ignoring it
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: The.crazy.ones.-.S01E21.-.SweSub.avi
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: The.crazy.ones.-.S01E21.-.SweSub.avi contains swesub(bed)?, ignoring it
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [273761]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Mom.S02E01.Hepatitis.and.Lemon.Zest.720p.WEB-DL.DD5.1.H.264-SA89
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83299]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E05.720p.HDTV.x264-QCF
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79212]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Manhattan.S01E13.x264.1080p.WEB-DL.Eng.NLsubs.TBS
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: Manhattan.S01E13.x264.1080p.WEB-DL.Eng.NLsubs.TBS contains nlsub(bed|s)?, ignoring it
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271728]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Manhattan.S01E11.x264.1080p.WEB-DL.Eng.NLsubs.TBS
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: Manhattan.S01E11.x264.1080p.WEB-DL.Eng.NLsubs.TBS contains nlsub(bed|s)?, ignoring it
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [253323]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Z.Nation.S01E05.720P.HDTV.DD5.1.Eng.NLsubs.TBS
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [249229]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Invalid scene release: Z.Nation.S01E05.720P.HDTV.DD5.1.Eng.NLsubs.TBS contains nlsub(bed|s)?, ignoring it
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E06.HDTV.XviD-AFG
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75166]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Holiday.Of.My.Life.Time.S01E04.HDTV.x264-TASTETV
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [122281]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E05.HDTV.XviD-AFG
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [284076]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [267709]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Girl.vs.Boy.S03E04.720p.HDTV.x264-FiHTV
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81346]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.1080p.WEB-DL.DD
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [97731]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Two.and.a.Half.Men.S12E01.The.Ol.Mexican.Spinach.720p.WEB-DL.DD5
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [251334]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: The.X.Factor.UK.S11E22.720p.HDTV.x264-FTP[rartv]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [269783]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E06.480p.HDTV.x264-mSD
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73178]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E05.HDTV.XviD-AFG
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Key.and.Peele.S04E05.480p.HDTV.x264-mSD
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [280027]
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Girl.vs.Boy.S03E04.480p.HDTV.x264-mSD
+2014-11-02 21:25:10 DEBUG    SEARCHQUEUE-RSS-SEARCH :: Using cached parse result for: Girl.vs.Boy.S03E04.HDTV.x264-FiHTV
+2014-11-02 21:25:10 INFO     SEARCHQUEUE-RSS-SEARCH :: No needed episodes found on the RSS feeds
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79330]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [265467]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83430]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81386]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [189931]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [132591]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81491]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [259669]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [138761]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [77398]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83462]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [128521]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [257550]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [249361]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [251418]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73244]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79389]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73246]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [122401]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73255]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [253485]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [261690]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [192061]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271936]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [155201]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [273986]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73290]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [204371]
+2014-11-02 21:25:10 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [247381]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271958]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [265145]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71256]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [212571]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271632]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [253543]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [257645]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [120431]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [271984]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75382]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75393]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [77444]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [149101]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [165521]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81559]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [122521]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81563]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73387]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81580]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [274099]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [276148]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79565]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [274129]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [194261]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [77526]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [100061]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72073]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79590]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [253682]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [196351]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83714]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [81670]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [72663]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [257804]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [280339]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71462]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [280361]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [284458]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [110381]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71470]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75567]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79668]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83774]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [71489]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [221001]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [202571]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [210771]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [276312]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [227161]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73562]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [264030]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [259946]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [259047]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [249708]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73587]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [280446]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73599]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [89991]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [276360]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [223161]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [264085]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79771]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [251807]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [77733]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73641]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75692]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [270261]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [270262]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79177]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [83897]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [92091]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [263506]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [264141]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79824]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [77780]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [79836]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [178141]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [73696]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [270307]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [75748]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [253931]
+2014-11-02 21:25:11 DB       CHECKVERSION :: cache.db: SELECT * FROM scene_exceptions WHERE tvdb_id = ? with args [70994]
+2014-11-02 21:25:11 INFO     CHECKVERSION :: No scene exceptions update needed
+2014-11-02 21:27:42 INFO     MAIN :: Signal 2 caught, saving and exiting...
+2014-11-02 21:27:42 INFO     MAIN :: Aborting all threads
+2014-11-02 21:27:42 INFO     MAIN :: Waiting for the SEARCH thread to exit
+2014-11-02 21:27:42 INFO     MAIN :: Waiting for the BACKLOG thread to exit
+2014-11-02 21:27:43 INFO     MAIN :: Waiting for the SHOWUPDATER thread to exit
+2014-11-02 21:27:43 INFO     MAIN :: Waiting for the VERSIONCHECKER thread to exit
+2014-11-02 21:27:44 INFO     MAIN :: Waiting for the SHOWQUEUE thread to exit
+2014-11-02 21:27:44 INFO     MAIN :: Waiting for the SEARCHQUEUE thread to exit
+2014-11-02 21:27:45 INFO     MAIN :: Waiting for the POSTPROCESSER thread to exit
+2014-11-02 21:27:46 INFO     MAIN :: Waiting for the TRAKTWATCHLIST thread to exit
+2014-11-02 21:27:47 INFO     MAIN :: Waiting for the PROPERFINDER thread to exit
+2014-11-02 21:27:48 INFO     MAIN :: Waiting for the SUBTITLESFINDER thread to exit
+2014-11-02 21:27:48 INFO     MAIN :: Saving all shows to the database
+2014-11-02 21:27:48 INFO     MAIN :: Saving config file to disk
+2014-11-02 21:27:49 INFO     MAIN :: Killing cherrypy
